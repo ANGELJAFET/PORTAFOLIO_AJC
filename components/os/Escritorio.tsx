@@ -36,7 +36,7 @@ const APPS: DefApp[] = [
       </div>
     ),
   },
-  { id: "certs", etiqueta: "Certificaciones", titulo: "Certificaciones — Control de calidad", w: 680, h: 560, render: () => <Certificaciones /> },
+  { id: "certs", etiqueta: "Certificaciones", titulo: "Certificaciones — Control de calidad", w: 860, h: 680, render: () => <Certificaciones /> },
   { id: "cv", etiqueta: "CV.pdf", titulo: "CV_Angel_Jafet_Contreras.pdf", w: 760, h: 680, render: () => <VisorCV /> },
   {
     id: "contacto",

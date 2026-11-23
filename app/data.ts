@@ -201,10 +201,13 @@ export const racks: Rack[] = [
   { nombre: "DEVOPS", items: ["Git", "GitHub", "Docker", "IIS", "Jira", "Scrum"] },
 ];
 
-export const certificaciones = [
-  { nombre: "Bootcamp «PROGRÁMATE» – Desarrollador Full Stack", emisor: "USAID / UTH / Coursera for Government", detalle: "360 h · 2024" },
-  { nombre: "Programación de Bases de Datos con SQL", emisor: "Oracle Academy / UTH", detalle: "180 h · 2024" },
-  { nombre: "CCNA: Redes Empresariales, Seguridad y Automatización", emisor: "Cisco Networking Academy / UTH", detalle: "2026" },
-  { nombre: "Network Support and Security", emisor: "Cisco Networking Academy", detalle: "2026" },
-  { nombre: "Network Addressing and Basic Troubleshooting", emisor: "Cisco Networking Academy", detalle: "2026" },
+export type Certificacion = { nombre: string; emisor: string; detalle: string; imagen: string };
+
+// Las imágenes están en /public/certificados
+export const certificaciones: Certificacion[] = [
+  { nombre: "CCNA: Redes Empresariales, Seguridad y Automatización", emisor: "Cisco Networking Academy / UTH", detalle: "2026", imagen: "/certificados/ccna-redes-empresariales.jpg" },
+  { nombre: "Network Support and Security", emisor: "Cisco Networking Academy", detalle: "2026", imagen: "/certificados/cisco-soporte-y-seguridad-de-red.jpg" },
+  { nombre: "Network Addressing and Basic Troubleshooting", emisor: "Cisco Networking Academy", detalle: "2026", imagen: "/certificados/cisco-direccionamiento-de-red.jpg" },
+  { nombre: "Programación de Bases de Datos con SQL", emisor: "Oracle Academy / UTH", detalle: "180 h · 2024", imagen: "/certificados/oracle-bases-de-datos-sql.jpg" },
+  { nombre: "Bootcamp «PROGRÁMATE» – Desarrollador Full Stack", emisor: "USAID / UTH / Coursera for Government", detalle: "360 h · 2024", imagen: "/certificados/bootcamp-programate-full-stack.jpg" },
 ];
