@@ -12,7 +12,7 @@ export const perfil = {
   telefono: "+504 9537-5819",
   whatsapp: "50495375819",
   // TODO: agrega tus enlaces reales (deja "" para ocultarlos)
-  github: "",
+  github: "https://github.com/ANGELJAFET",
   linkedin: "",
   cv: "/CV_Angel_Jafet_Contreras.pdf",
   lema: "Desarrollo los sistemas que una planta usa todos los días.",
