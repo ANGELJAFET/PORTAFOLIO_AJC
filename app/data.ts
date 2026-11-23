@@ -6,7 +6,8 @@
 export const perfil = {
   nombre: "Ángel Jafet Contreras Carranza",
   nombreCorto: "Ángel Contreras",
-  titulo: "Desarrollador Full Stack",
+  titulo: "Ingeniero en Computación",
+  especialidad: "Desarrollo de software · Redes e infraestructura de TI",
   ubicacion: "Choluteca, Honduras",
   correo: "contrerasangeljafet@gmail.com",
   telefono: "+504 9537-5819",
@@ -15,9 +16,15 @@ export const perfil = {
   github: "https://github.com/ANGELJAFET",
   linkedin: "",
   cv: "/CV_Angel_Jafet_Contreras.pdf",
-  lema: "Desarrollo los sistemas que una planta usa todos los días.",
+  lema: "Del código al data center: desarrollo software y mantengo la infraestructura donde corre.",
   resumen:
-    "Soy desarrollador Full Stack en Choluteca. Trabajo con Next.js, React, Node.js y SQL Server, y formo parte del equipo que desarrolla GCM PROCESS, la plataforma que controla la producción y la trazabilidad de una planta camaronera. Antes fui el responsable de TI de esa misma planta, así que conozco tanto el código como los servidores y la red donde corre.",
+    "Soy Ingeniero en Computación en Choluteca, con experiencia en dos frentes. En desarrollo, formo parte del equipo de GCM PROCESS, la plataforma con Next.js, React, Node.js y SQL Server que controla la producción y la trazabilidad de una planta camaronera. En infraestructura, fui el responsable del área de TI de esa misma planta: servidores, data center, respaldos, red UniFi, cableado, switches y soporte a usuarios, con formación Cisco CCNA.",
+  destacados: [
+    { valor: "500+", etiqueta: "endpoints REST en producción" },
+    { valor: "8", etiqueta: "módulos de GCM PROCESS" },
+    { valor: "CCNA", etiqueta: "redes empresariales · Cisco" },
+    { valor: "TI", etiqueta: "responsable del área de una planta" },
+  ],
 };
 
 export type Etapa = {
@@ -74,7 +81,8 @@ export const lineaDeProceso: Etapa[] = [
 export type Modulo = {
   codigo: string;
   nombre: string;
-  estado: "PRODUCCIÓN" | "EN DESARROLLO";
+  estado: "PRODUCCIÓN" | "EN DESARROLLO" | "EN OPERACIÓN";
+  area: "Desarrollo" | "Infraestructura";
   resumen: string;
   problema: string;
   solucion: string[];
@@ -87,6 +95,7 @@ export type Modulo = {
 export const modulos: Modulo[] = [
   {
     codigo: "MOD-01",
+    area: "Desarrollo",
     nombre: "GCM PROCESS",
     estado: "PRODUCCIÓN",
     resumen:
@@ -109,7 +118,28 @@ export const modulos: Modulo[] = [
     nota: "Sistema privado de la empresa: el código no es público.",
   },
   {
+    codigo: "INF-01",
+    area: "Infraestructura",
+    nombre: "Infraestructura de TI",
+    estado: "EN OPERACIÓN",
+    resumen:
+      "Área de TI de la planta empacadora Nova Honduras: servidores, data center, red, accesos y soporte a usuarios.",
+    problema:
+      "Una planta que opera por turnos necesita que sus servidores, su red y sus equipos funcionen sin interrupciones, porque de ellos dependen la producción y el pesado.",
+    solucion: [
+      "Administración de servidores de bases de datos y de aplicaciones, y del data center de la planta.",
+      "Respaldos de bases de datos y servidores.",
+      "Red inalámbrica UniFi (controladoras y access points), cableado de red y switches.",
+      "Cuentas de usuario y correo, y accesos a servidores mediante escritorio remoto.",
+      "Instalación y configuración de equipos y software; antivirus, actualizaciones e inventario de TI.",
+      "Soporte técnico de laptops, PC, impresoras de red e impresoras de etiquetas, y del sistema de cámaras de seguridad.",
+    ],
+    stack: ["Servidores", "Data center", "UniFi", "Switches", "TCP/IP", "VLANs", "Escritorio remoto", "Help Desk"],
+    nota: "Puesto: Asistente de TI, responsable del área de TI de la planta (Jun – Sep 2026).",
+  },
+  {
     codigo: "MOD-02",
+    area: "Desarrollo",
     nombre: "Pesado Automático",
     estado: "PRODUCCIÓN",
     resumen:
@@ -126,6 +156,7 @@ export const modulos: Modulo[] = [
   },
   {
     codigo: "MOD-03",
+    area: "Desarrollo",
     nombre: "GCM Tickets",
     estado: "PRODUCCIÓN",
     resumen:
@@ -141,6 +172,7 @@ export const modulos: Modulo[] = [
   },
   {
     codigo: "MOD-04",
+    area: "Desarrollo",
     nombre: "Rendimientos y Metas",
     estado: "EN DESARROLLO",
     resumen:
@@ -164,7 +196,8 @@ export const racks: Rack[] = [
   { nombre: "BACKEND", items: ["Node.js", "Express", "APIs REST", "JWT", "SSO", "IAM / Roles"] },
   { nombre: "DATOS", items: ["SQL Server", "T‑SQL", "Procedimientos", "Triggers", "Vistas", "Oracle"] },
   { nombre: "INTEGRACIÓN", items: ["Electron", "Puerto serial", "Básculas", "Códigos QR"] },
-  { nombre: "REDES", items: ["TCP/IP", "VLANs", "OSPF", "NAT", "UniFi", "Switches"] },
+  { nombre: "REDES", items: ["TCP/IP", "Subnetting", "VLANs", "OSPF", "NAT", "UniFi"] },
+  { nombre: "INFRAESTRUCTURA", items: ["Servidores", "Data center", "Respaldos", "Switches", "Escritorio remoto", "Help Desk"] },
   { nombre: "DEVOPS", items: ["Git", "GitHub", "Docker", "IIS", "Jira", "Scrum"] },
 ];
 

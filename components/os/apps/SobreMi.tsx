@@ -1,6 +1,6 @@
 "use client";
 
-import { perfil, modulos } from "@/app/data";
+import { perfil } from "@/app/data";
 import { abrirApp } from "../eventos";
 
 export default function SobreMi() {
@@ -16,7 +16,8 @@ export default function SobreMi() {
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-ambar">{perfil.titulo}</p>
           <h1 className="mt-1 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">{perfil.nombre}</h1>
-          <p className="mt-1 text-planta-300">⌖ {perfil.ubicacion} · presencial, híbrido o remoto</p>
+          <p className="mt-1 font-medium text-turquesa">{perfil.especialidad}</p>
+          <p className="mt-0.5 text-planta-300">⌖ {perfil.ubicacion} · presencial, híbrido o remoto</p>
         </div>
       </div>
 
@@ -24,10 +25,10 @@ export default function SobreMi() {
       <p className="mt-2 text-lg leading-relaxed text-planta-100">{perfil.resumen}</p>
 
       <dl className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {(modulos[0].metricas ?? []).map((m) => (
+        {perfil.destacados.map((m) => (
           <div key={m.etiqueta} className="rounded-lg border border-planta-700 bg-planta-950/60 p-3">
             <dd className="font-mono text-2xl font-bold text-turquesa">{m.valor}</dd>
-            <dt className="text-xs text-planta-400">{m.etiqueta} en GCM PROCESS</dt>
+            <dt className="text-xs text-planta-400">{m.etiqueta}</dt>
           </div>
         ))}
       </dl>

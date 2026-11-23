@@ -5,10 +5,11 @@ import { LogoAJC } from "./Iconos";
 
 const LINEAS = [
   "AJC BIOS v26.11 — Choluteca, Honduras",
-  "CPU: Full Stack Developer @ producción ............ OK",
+  "CPU: Ingeniero en Computación · Dev + Infra ...... OK",
   "Memoria: Next.js · React · Node.js · SQL Server ..... OK",
   "Detectando básculas en COM3 ........................ OK",
   "Montando dbo.Portafolio ............................ OK",
+  "Red: TCP/IP · VLANs · OSPF · NAT (CCNA) .......... OK",
   "Iniciando servicios de red (UniFi) ................. OK",
   "Cargando AJC OS…",
 ];

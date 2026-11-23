@@ -21,7 +21,7 @@ export function Stack() {
     <div className="p-4 sm:p-6">
       <p className="etiqueta-seccion">Data center</p>
       <h2 className="mb-1 mt-1 text-2xl font-bold">Mi stack, rack por rack</h2>
-      <p className="mb-5 text-planta-300">Del frontend al cableado: desarrollo e infraestructura en el mismo perfil.</p>
+      <p className="mb-5 text-planta-300">Del frontend al cableado: desarrollo de software, redes e infraestructura en el mismo perfil.</p>
       <Racks />
     </div>
   );

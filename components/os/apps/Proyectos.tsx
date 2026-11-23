@@ -22,7 +22,7 @@ export default function Proyectos() {
                 }`}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden>
-                  <path d="M2 6h7l2 2h11v12H2z" fill={i === sel ? "#f5a524" : "#3b82f6"} opacity=".9" />
+                  <path d="M2 6h7l2 2h11v12H2z" fill={i === sel ? "#f5a524" : x.area === "Infraestructura" ? "#14b8a6" : "#3b82f6"} opacity=".9" />
                 </svg>
                 <span className="whitespace-nowrap">{x.nombre}</span>
               </button>
@@ -34,12 +34,13 @@ export default function Proyectos() {
       <article key={m.codigo} className="min-w-0 flex-1 p-5 sm:p-7">
         <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
           <span className="text-planta-400">{m.codigo}</span>
+          <span className="rounded-full border border-planta-600 px-2 py-0.5 text-planta-300">{m.area}</span>
           <span
             className={`flex items-center gap-1.5 rounded-full border px-2 py-0.5 ${
-              m.estado === "PRODUCCIÓN" ? "border-led-verde/40 text-led-verde" : "border-ambar/40 text-ambar"
+              m.estado !== "EN DESARROLLO" ? "border-led-verde/40 text-led-verde" : "border-ambar/40 text-ambar"
             }`}
           >
-            <span className={`led ${m.estado === "PRODUCCIÓN" ? "" : "led-parpadea"}`} style={{ width: 6, height: 6 }} />
+            <span className={`led ${m.estado !== "EN DESARROLLO" ? "" : "led-parpadea"}`} style={{ width: 6, height: 6 }} />
             {m.estado}
           </span>
         </div>
@@ -60,7 +61,7 @@ export default function Proyectos() {
         <h3 className="etiqueta-seccion mt-6">El problema</h3>
         <p className="mt-2">{m.problema}</p>
 
-        <h3 className="etiqueta-seccion mt-6">Lo que construí</h3>
+        <h3 className="etiqueta-seccion mt-6">{m.area === "Infraestructura" ? "Lo que hice" : "Lo que construí"}</h3>
         <ul className="mt-2 space-y-2">
           {m.solucion.map((s) => (
             <li key={s} className="flex gap-3">

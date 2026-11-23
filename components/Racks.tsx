@@ -3,7 +3,7 @@ import { racks } from "@/app/data";
 // El stack técnico presentado como gabinetes de un data center.
 export default function Racks() {
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
       {racks.map((r, ri) => (
         <div key={r.nombre} className="rounded-xl border border-planta-700 bg-planta-950 p-2 shadow-inner">
           <div className="mb-2 flex items-center justify-between px-1 font-mono text-[10px] text-planta-400">

@@ -9,7 +9,7 @@ type Fila = Record<string, string | number>;
 function crearBD(): Record<string, Fila[]> {
   return {
     Candidatos: [{ id: 1, nombre: perfil.nombre, rol: perfil.titulo, ciudad: "Choluteca", disponible: 1 }],
-    Proyectos: modulos.map((m) => ({ codigo: m.codigo, nombre: m.nombre, estado: m.estado, stack: m.stack.join(", ") })),
+    Proyectos: modulos.map((m) => ({ codigo: m.codigo, nombre: m.nombre, area: m.area, estado: m.estado, stack: m.stack.join(", ") })),
     Experiencia: lineaDeProceso.map((e, i) => ({ id: i + 1, periodo: e.periodo, puesto: e.titulo, lugar: e.lugar })),
     Stack: racks.flatMap((r) => r.items.map((t) => ({ categoria: r.nombre, tecnologia: t }))),
     Certificaciones: certificaciones.map((c, i) => ({ id: i + 1, nombre: c.nombre, emisor: c.emisor, detalle: c.detalle })),
@@ -19,6 +19,8 @@ function crearBD(): Record<string, Fila[]> {
 const CONSULTAS = [
   { nombre: "¿Está disponible?", sql: "SELECT nombre, rol, ciudad, disponible\nFROM dbo.Candidatos\nWHERE ciudad = 'Choluteca';" },
   { nombre: "Proyectos en producción", sql: "SELECT codigo, nombre, estado\nFROM dbo.Proyectos\nWHERE estado = 'PRODUCCIÓN';" },
+  { nombre: "Experiencia en infraestructura", sql: "SELECT nombre, estado, stack\nFROM dbo.Proyectos\nWHERE area = 'Infraestructura';" },
+  { nombre: "Stack de redes", sql: "SELECT tecnologia\nFROM dbo.Stack\nWHERE categoria = 'REDES';" },
   { nombre: "Trayectoria", sql: "SELECT periodo, puesto, lugar\nFROM dbo.Experiencia\nORDER BY id DESC;" },
   { nombre: "Stack de base de datos", sql: "SELECT tecnologia\nFROM dbo.Stack\nWHERE categoria = 'DATOS';" },
   { nombre: "Certificaciones de Cisco", sql: "SELECT nombre, detalle\nFROM dbo.Certificaciones\nWHERE emisor LIKE '%Cisco%';" },

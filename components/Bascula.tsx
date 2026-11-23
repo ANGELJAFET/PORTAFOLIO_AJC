@@ -150,7 +150,7 @@ export default function Bascula() {
               <dt className="font-bold">CANDIDATO</dt>
               <dd>{perfil.nombreCorto}</dd>
               <dt className="font-bold">TALLA</dt>
-              <dd>Full Stack</dd>
+              <dd>Dev + Infra</dd>
               <dt className="font-bold">LOTE</dt>
               <dd>{lote}</dd>
               <dt className="font-bold">PESO</dt>

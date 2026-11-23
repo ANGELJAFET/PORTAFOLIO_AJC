@@ -17,12 +17,12 @@ import { Certificaciones, Experiencia, Papelera, Stack, VisorCV } from "./apps/V
 type DefApp = { id: IdApp; etiqueta: string; titulo: string; w: number; h: number; render: () => ReactNode };
 
 const APPS: DefApp[] = [
-  { id: "sobre", etiqueta: "Sobre mí", titulo: "Sobre mí — Ángel Contreras", w: 720, h: 600, render: () => <SobreMi /> },
+  { id: "sobre", etiqueta: "Sobre mí", titulo: "Sobre mí — Ángel Contreras", w: 720, h: 680, render: () => <SobreMi /> },
   { id: "proyectos", etiqueta: "Proyectos", titulo: "Explorador — C:\\Ángel\\Proyectos", w: 900, h: 620, render: () => <Proyectos /> },
   { id: "experiencia", etiqueta: "Experiencia", titulo: "Experiencia — Línea de proceso", w: 820, h: 560, render: () => <Experiencia /> },
   { id: "sql", etiqueta: "SQL Studio", titulo: "SQL Studio — AJC-SRV01.Portafolio", w: 900, h: 600, render: () => <SqlStudio /> },
   { id: "terminal", etiqueta: "Terminal", titulo: "visitante@ajc-srv01: ~", w: 720, h: 460, render: () => <Terminal /> },
-  { id: "stack", etiqueta: "Data Center", titulo: "Data Center — Stack técnico", w: 940, h: 520, render: () => <Stack /> },
+  { id: "stack", etiqueta: "Data Center", titulo: "Data Center — Stack técnico", w: 940, h: 640, render: () => <Stack /> },
   {
     id: "bascula",
     etiqueta: "Báscula",
@@ -204,16 +204,16 @@ export default function Escritorio() {
             <p className="mt-2 flex items-center gap-2 font-semibold">
               <span className="led led-parpadea text-led-verde" /> Disponible para nuevas oportunidades
             </p>
-            <p className="mt-1 text-sm text-planta-300">{perfil.titulo} · presencial, híbrido o remoto</p>
+            <p className="mt-1 text-sm text-planta-300">{perfil.titulo} · {perfil.especialidad}</p>
           </div>
           <div className="widget p-4">
-            <p className="font-mono text-[11px] uppercase tracking-widest text-planta-400">Sistemas que he construido</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-planta-400">Sistemas a mi cargo</p>
             <ul className="mt-2 space-y-1.5 text-sm">
               {modulos.map((m) => (
                 <li key={m.codigo} className="flex items-center gap-2">
-                  <span className={`led ${m.estado === "PRODUCCIÓN" ? "text-led-verde" : "led-parpadea text-ambar"}`} style={{ width: 7, height: 7 }} />
+                  <span className={`led ${m.estado !== "EN DESARROLLO" ? "text-led-verde" : "led-parpadea text-ambar"}`} style={{ width: 7, height: 7 }} />
                   <span className="flex-1">{m.nombre}</span>
-                  <span className="font-mono text-[10px] text-planta-400">{m.estado === "PRODUCCIÓN" ? "PROD" : "DEV"}</span>
+                  <span className="font-mono text-[10px] text-planta-400">{m.estado === "PRODUCCIÓN" ? "PROD" : m.estado === "EN OPERACIÓN" ? "INFRA" : "DEV"}</span>
                 </li>
               ))}
             </ul>

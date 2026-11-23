@@ -44,7 +44,7 @@ function ejecutar(cmd: string): ReactNode {
     case "whoami":
       return (
         <p>
-          <span className="text-ambar">{perfil.nombre}</span> — {perfil.titulo}, {perfil.ubicacion}.<br />
+          <span className="text-ambar">{perfil.nombre}</span> — {perfil.titulo} ({perfil.especialidad}), {perfil.ubicacion}.<br />
           {perfil.resumen}
         </p>
       );
@@ -64,7 +64,7 @@ function ejecutar(cmd: string): ReactNode {
         <ul>
           {modulos.map((m) => (
             <li key={m.codigo}>
-              <span className={m.estado === "PRODUCCIÓN" ? "text-led-verde" : "text-ambar"}>●</span> {m.codigo}{" "}
+              <span className={m.estado !== "EN DESARROLLO" ? "text-led-verde" : "text-ambar"}>●</span> {m.codigo}{" "}
               <span className="text-turquesa">{m.nombre}</span> <span className="text-planta-400">— {m.resumen}</span>
             </li>
           ))}
@@ -97,12 +97,12 @@ function ejecutar(cmd: string): ReactNode {
           <pre className="whitespace-pre-wrap text-planta-300">
             {`SELECT nombre, rol, ciudad, disponible
 FROM   dbo.Candidatos
-WHERE  ciudad = N'Choluteca' AND stack LIKE N'%SQL Server%';`}
+WHERE  ciudad = N'Choluteca' AND perfil LIKE N'%Dev + Infra%';`}
           </pre>
           <pre className="mt-2 overflow-x-auto text-planta-100">
-            {`nombre               rol                ciudad      disponible
--------------------  -----------------  ----------  ----------
-Ángel J. Contreras   Full Stack Dev     Choluteca   1
+            {`nombre               rol                    ciudad      disponible
+-------------------  ---------------------  ----------  ----------
+Ángel J. Contreras   Ing. en Computación    Choluteca   1
 
 (1 fila afectada)`}
           </pre>
