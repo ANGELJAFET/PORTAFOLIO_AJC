@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+.env*
+diagnostico.*
+servidor.log
+respuesta.html
+subir-a-github.bat 
+subir-github.log

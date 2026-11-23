@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+@theme {
+  --color-planta-950: #070a0e;
+  --color-planta-900: #0b1016;
+  --color-planta-850: #0f151d;
+  --color-planta-800: #141c26;
+  --color-planta-700: #1e2a38;
+  --color-planta-600: #2b3a4c;
+  --color-planta-400: #6b7f96;
+  --color-planta-300: #95a6ba;
+  --color-planta-100: #e3ebf3;
+  --color-ambar: #f5a524;
+  --color-ambar-suave: #f5a52422;
+  --color-turquesa: #2dd4bf;
+  --color-led-verde: #34d399;
+  --color-led-rojo: #f87171;
+  --font-sans: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-planta-950);
+}
+
+body {
+  background: var(--color-planta-950);
+  color: var(--color-planta-100);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Cuadrícula técnica de fondo, como un plano de planta */
+.plano {
+  background-image:
+    linear-gradient(to right, #ffffff08 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff08 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.panel {
+  background: linear-gradient(180deg, var(--color-planta-850), var(--color-planta-900));
+  border: 1px solid var(--color-planta-700);
+  border-radius: 14px;
+}
+
+.etiqueta-seccion {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ambar);
+}
+
+/* LED parpadeante */
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+.led {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+  background: currentColor;
+}
+.led-parpadea { animation: parpadeo 1.6s ease-in-out infinite; }
+
+/* Pantalla de 7 segmentos de la báscula */
+.display-bascula {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: #7dffb2;
+  text-shadow: 0 0 12px #34d39988, 0 0 2px #7dffb2;
+  background:
+    repeating-linear-gradient(0deg, #00000033 0 2px, transparent 2px 4px),
+    #03140c;
+}
+
+/* Banda transportadora */
+@keyframes banda {
+  from { background-position: 0 0; }
+  to { background-position: 40px 0; }
+}
+.banda {
+  background-image: repeating-linear-gradient(90deg, #2b3a4c 0 2px, transparent 2px 20px);
+  animation: banda 1.2s linear infinite;
+}
+
+/* Aparición al hacer scroll */
+.revelar {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.revelar.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cursor de terminal */
+@keyframes cursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor-terminal { animation: cursor 1s step-end infinite; }
+
+/* Etiqueta impresa saliendo de la impresora */
+@keyframes imprimir {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(-8px); }
+  to { clip-path: inset(0 0 0 0); transform: none; }
+}
+.imprimiendo { animation: imprimir 1.1s steps(14) forwards; }
+
+::selection {
+  background: var(--color-ambar);
+  color: #000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .led-parpadea, .banda, .cursor-terminal, .imprimiendo { animation: none; }
+  .revelar { opacity: 1; transform: none; transition: none; }
+}
+
+/* ───────── AJC OS ───────── */
+html, body { height: 100%; overflow: hidden; overscroll-behavior: none; }
+
+.fondo-os {
+  background:
+    radial-gradient(1200px 700px at 12% 110%, #f5a52433, transparent 60%),
+    radial-gradient(900px 600px at 95% -10%, #2dd4bf2e, transparent 60%),
+    radial-gradient(700px 500px at 60% 55%, #3b82f61a, transparent 70%),
+    linear-gradient(160deg, #0a0f16 0%, #070a0e 60%, #0b0d12 100%);
+}
+.fondo-os::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, #ffffff07 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff07 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+  pointer-events: none;
+}
+@keyframes aurora {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+  50% { transform: translate(-3%, 2%) scale(1.05); opacity: 1; }
+}
+.marca-agua {
+  font-size: min(34vw, 420px);
+  line-height: 1;
+  background: linear-gradient(135deg, #f5a52414, #2dd4bf10 60%, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px #ffffff0d;
+  animation: aurora 14s ease-in-out infinite;
+}
+
+.widget {
+  background: #0f151dcc;
+  border: 1px solid #ffffff14;
+  border-radius: 18px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 40px -20px #000;
+}
+
+.text-shadow { text-shadow: 0 1px 3px #000, 0 0 8px #0009; }
+
+@keyframes ventana-abrir {
+  from { opacity: 0; transform: scale(0.94) translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.ventana-abrir { animation: ventana-abrir 0.22s cubic-bezier(.2,.8,.2,1); }
+
+@keyframes aviso-entrar {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: none; }
+}
+.aviso-entrar { animation: aviso-entrar 0.3s ease-out; }
+
+@keyframes menu-entrar {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.menu-entrar { animation: menu-entrar 0.2s ease-out; }
+
+@keyframes barra-carga {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.barra-carga { animation: barra-carga 1.2s ease-in-out forwards; }
+
+/* Barras de desplazamiento discretas */
+* { scrollbar-width: thin; scrollbar-color: #2b3a4c transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marca-agua, .ventana-abrir, .aviso-entrar, .menu-entrar, .barra-carga { animation: none; }
+}
