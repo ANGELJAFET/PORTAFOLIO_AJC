@@ -114,10 +114,16 @@ export default function Escritorio() {
         const def = porId[id];
         const anchoPant = window.innerWidth;
         const altoPant = window.innerHeight - 52;
-        const w = Math.min(def.w, anchoPant - 40);
+        // Deja libre la columna de iconos del escritorio (≈ 230 px) para que siempre se puedan tocar.
+        const margenIconos = anchoPant >= 768 && anchoPant - 230 - 16 >= 520 ? 230 : 16;
+        const anchoUtil = anchoPant - margenIconos - 16;
+        const w = Math.min(def.w, anchoUtil);
         const h = Math.min(def.h, altoPant - 30);
         const n = vs.length % 6;
-        const x = Math.max(16, Math.round((anchoPant - w) / 2) + (n - 2) * 32);
+        const x = Math.min(
+          Math.max(margenIconos, margenIconos + Math.round((anchoUtil - w) / 2) + (n - 2) * 32),
+          Math.max(margenIconos, anchoPant - w - 16)
+        );
         const y = Math.max(12, Math.round((altoPant - h) / 2) + (n - 2) * 26);
         return [...vs, { id, x, y, w, h, z, minimizada: false, maximizada: false }];
       });
@@ -233,9 +239,7 @@ export default function Escritorio() {
               e.stopPropagation();
               setSeleccion(id);
             }}
-            onClick={() => movil && abrir(id)}
-            onDoubleClick={() => !movil && abrir(id)}
-            onKeyDown={(e) => e.key === "Enter" && abrir(id)}
+            onClick={() => abrir(id)}
             className={`group flex w-full flex-col items-center gap-1.5 rounded-lg p-2 text-center outline-none transition md:w-24 ${
               seleccion === id ? "bg-white/15 ring-1 ring-white/25" : "hover:bg-white/8"
             } focus-visible:ring-2 focus-visible:ring-ambar`}
